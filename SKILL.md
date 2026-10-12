@@ -1,8 +1,8 @@
 ---
 slug: ian-skill-coach
-name: ian-skill开发教练
+name: ian-skill-coach
 displayName: Skill 开发教练
-version: 2.1.0
+version: 2.1.1
 description: "诊断一个 Skill「做完了到底行不行」，并像教练一样指导它下一步怎么升级。核心判断：Skill 不是文档，是给 Agent 的上下文包——所以它要过的不是「人读得懂吗」，而是「会被触发吗、读得进去吗、每轮要付多少 token」。方法分两层：① 上下文工程判据（description 当路由条件写、三层披露结构、关键约束放两端、规则写成「适用条件+动作+例外+怎么验证」）② 工业级判据（改一处同步哪几处、四道门、反借口段）。用于：给已有 SKILL.md 做体检、诊断「为什么我这个 Skill 没人用/老不触发/行为不稳」、判断先改哪一处以及具体怎么改、给 Skill 做版本升级与改后复评、从零做一个 Skill、把需求理清并判断该做 Skill 还是 Agent、检查能不能跨工具用、打包交付。Use when the user wants to diagnose, upgrade, audit or create an agent skill. 触发词：检查这个 skill, skill 体检, 这个 skill 打几分, 我的 skill 没人用, 为什么不触发, skill 怎么升级, 帮我改 SKILL.md, 做个 skill, 写个技能, 帮我把需求理清, 该做 skill 还是 agent, 这个技能能装到哪些工具, 打包 skill, audit SKILL.md, why is my skill not triggering, upgrade my skill. 不适用：只判断一份交付物对不对（那是验收类技能的活）、给 Skill 写传播文案与推广（那是打磨传播类技能的活）、一次性的临时提示词、与 Skill 无关的普通编码或写作任务。"
 summary: 诊断一个 Skill「做完了到底行不行」，并像教练一样指导下一步怎么升级。核心判断是——Skill 不是文档，是给 Agent 的上下文包：它要过的不是「人读得懂吗」，而是「会被触发吗、读得进去吗、每轮要付多少 token」。方法分上下文工程判据与工业级判据两层，附可复跑的检查脚本。
 license: MIT

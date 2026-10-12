@@ -8,6 +8,12 @@
 
 **装它**：[SkillHub](https://skillhub.cn/skills/indiv-zhunsheng/ian-skill-coach)（一键安装）
 
+```bash
+skillhub install ian-skill-coach --namespace indiv-zhunsheng
+```
+
+也可以直接把整个目录复制进你的技能目录，见下节。
+
 ---
 
 ## 它解决的问题
@@ -49,6 +55,25 @@ Skill **不是文档，是给 Agent 的上下文包**，所以它要过的不是
 | 其他 | 查你所用工具的文档 |
 
 > ⚠️ **多数工具只在启动时扫描技能目录**——复制完之后**重启一次**，否则会以为没生效。
+
+### 跨工具兼容：一条实测的坑
+
+本包 frontmatter 里有 `slug / displayName / version / summary` 四个字段，**这是 SkillHub 要求**的。
+但**官方 Agent Skills 规范**用的是严格白名单（只许
+`name / description / license / compatibility / metadata / allowed-tools`），
+跑官方校验器会把这四个判为「意外字段」：
+
+```bash
+uvx --from skills-ref agentskills validate ian-skill-coach
+# → Unexpected fields in frontmatter: displayName, slug, summary, version.
+```
+
+**一个包不可能同时「最合规于两边」。** 这里的取舍是**按目标平台取字段**：
+
+- 走 **SkillHub / ClawHub** —— 直接用本包，五个字段齐全。
+- 走 **Claude Code 等官方生态** —— 照常可用。这些工具读的是 `name` 与 `description`，
+  本包两个都有；只是官方校验器会报上面那四个字段（不影响加载与触发）。
+- 要**进官方 CI 门** —— 需要另出一版只留白名单字段（本包没做，见 CHANGELOG「未做的事」）。
 
 ---
 
